@@ -20,16 +20,14 @@ class ProductController extends AbstractController
         $form = $this->createForm(ProductType::class);
         $form->handleRequest($request);
         $cart = $session->get('cart', []);
-        $cart['product'] = $product;
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if (isset($cart['product'])) {
-                $cart['quantity'] = $form->getData()['quantity'];
+            if (isset($cart[$product->getId()])) {
+                $cart[$product->getId()] = $form->getData()['quantity'];
             }
 
             $session->set('cart', $cart);
-            dd($session);
             return $this->redirectToRoute('cart_show');
         }
 
