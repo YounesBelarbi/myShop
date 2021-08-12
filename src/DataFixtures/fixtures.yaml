@@ -1,5 +1,5 @@
 App\Entity\Product:
-    product_{1..23}:
+    product_{1..12}:
         name: '<word()>' 
         description: '<text(800)>' 
         price: '<randomFloat(2,30,1500)>'

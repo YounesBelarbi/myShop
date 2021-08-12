@@ -4,5 +4,34 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Accueil</h1>
+	<div class="container px-lg-5 my-5">
+		<div class="text-center text-black">
+			<h2 class="display-5 ">Les produits</h2>
+		</div>
+	</div>
+	<section class="py-5">
+		<div class="container px-4 px-lg-5 mt-5">
+			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				{% for product in products %}
+					<div class="col mb-5">
+						<div class="card h-100">
+							<img class="card-img-top" src="https://picsum.photos/id/{{ random(50, 100) }}/600/700" alt="..."/>
+							<div class="card-body p-4">
+								<div class="text-center">
+									<h5 class="fw-bolder">{{product.name}}</h5>
+									{{product.price}}
+									€
+								</div>
+							</div>
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								<div class="text-center">
+									<a class="btn btn-outline-dark mt-auto" href={{path('product_show', {id: product.id} )}}>Voir la fiche</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
 {% endblock %}
