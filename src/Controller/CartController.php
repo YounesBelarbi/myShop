@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class CartController extends AbstractController
 {
     /**
-     * @Route("/cart", name="cart")
+     * @Route("/cart", name="cart_show")
      */
-    public function index(): Response
+    public function cartShow(): Response
     {
         return $this->render('cart/index.html.twig', []);
     }

@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
@@ -12,8 +15,27 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/{id}", name="product_show")
      */
-    public function product_show(Product $product): Response
+    public function product_show(Request $request, Product $product, SessionInterface $session): Response
     {
-        return $this->render('product/index.html.twig', compact('product'));
+        $form = $this->createForm(ProductType::class);
+        $form->handleRequest($request);
+        $cart = $session->get('cart', []);
+        $cart['product'] = $product;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            if (isset($cart['product'])) {
+                $cart['quantity'] = $form->getData()['quantity'];
+            }
+
+            $session->set('cart', $cart);
+            dd($session);
+            return $this->redirectToRoute('cart_show');
+        }
+
+        return $this->render('product/index.html.twig', [
+            'product' => $product,
+            'form' => $form->createView()
+        ]);
     }
 }
