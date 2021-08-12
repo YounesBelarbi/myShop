@@ -6,7 +6,7 @@
 			{% block title %}{% endblock %}
 			myShop</title>
 		{# Run `composer require symfony/webpack-encore-bundle`
-																																								           and uncomment the following Encore helpers to start using Symfony UX #}
+																																																           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
@@ -29,13 +29,13 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container px-4 px-lg-5">
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<form class="d-flex">
-							<button class="btn btn-outline-dark" type="submit">
+						<a href={{path('cart_show')}}>
+							<button class="btn btn-outline-dark" type="button">
 								<i class="bi-cart-fill me-1"></i>
 								Panier
 								<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
 							</button>
-						</form>
+						</a>
 					</div>
 				</div>
 			</nav>
