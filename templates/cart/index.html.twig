@@ -25,6 +25,11 @@
 							<td>{{item.product.price}}</td>
 							<td>{{item.quantity}}</td>
 							<td>{{item.product.price * item.quantity}}</td>
+							<td>
+								<a href={{path('cart_add', {id: item.product.id} )}} class="btn btn-success">
+									<i class="bi bi-cart-plus"></i>
+								</a>
+							</td>
 						</tr>
 					{% else %}
 						<tr>

@@ -47,4 +47,11 @@ class CartService
     {
         $this->session->remove('cart');
     }
+
+    public function addProductInCart(int $id)
+    {
+        $cart = $this->session->get('cart', []);
+        $cart[$id]++;
+        $this->session->set('cart', $cart);
+    }
 }
