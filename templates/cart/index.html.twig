@@ -4,5 +4,44 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Panier</h1>
+	<section class="py-5">
+		<div class="container px-lg-5 my-5">
+			<h2>Panier</h2>
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Nom</th>
+						<th scope="col">prix</th>
+						<th scope="col">Quantité</th>
+						<th scope="col">Total</th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in items %}
+						<tr>
+							{# <th scope="row"></th> #}
+							<td>{{item.product.name}}</td>
+							<td>{{item.product.price}}</td>
+							<td>{{item.quantity}}</td>
+							<td>{{item.product.price * item.quantity}}</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="5" class="text-center">Votre panier est vide</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>Total de votre panier:
+							{{ total }}€</td>
+					</tr>
+				</tfoot>
+			</table>
+			<a href="{{path("cart_empty")}}" class="btn btn-danger">
+				Vider le panier
+			</a>
+		</div>
+	</section>
 {% endblock %}
