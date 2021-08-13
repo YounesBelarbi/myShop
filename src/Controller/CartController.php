@@ -38,4 +38,22 @@ class CartController extends AbstractController
         $cartService->addProductInCart($id);
         return $this->redirectToRoute('cart_show');
     }
+
+    /**
+     * @Route("/cart/reduce/{id}", name="cart_reduce")
+     */
+    public function reduce($id, CartService $cartService): Response
+    {
+        $cartService->reduceProductInCart($id);
+        return $this->redirectToRoute('cart_show');
+    }
+
+    /**
+     * @Route("/cart/delete/{id}", name="cart_delete")
+     */
+    public function delete($id, CartService $cartService): Response
+    {
+        $cartService->deleteProductFromCart($id);
+        return $this->redirectToRoute('cart_show');
+    }
 }
