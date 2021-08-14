@@ -2,12 +2,20 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use App\Repository\ProductRepository;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * 
+ *  @ApiResource(
+ *     collectionOperations={"get"={"normalization_context"={"groups"="product:list:read"}}},
+ *     itemOperations={"get"={"normalization_context"={"groups"="product:item:read"}}},
+ *     order={"name"="ASC"},
+ *     paginationEnabled=false)
  */
 class Product
 {
@@ -15,21 +23,25 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"product:list:read", "product:item:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"product:list:read", "product:item:read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Groups({"product:list:read", "product:item:read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"product:list:read", "product:item:read"})
      */
     private $price;
 
