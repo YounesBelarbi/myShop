@@ -12,14 +12,20 @@ class AdminProductController extends AbstractCrudController
         return Product::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
+        // return [
+        //     IdField::new('id'),
+        //     TextField::new('title'),
+        //     TextEditorField::new('description'),
+        // ];
+
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            'name',
+            'description',
+            'price',
+
         ];
     }
-    */
 }

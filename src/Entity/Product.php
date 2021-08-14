@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +32,12 @@ class Product
      * @ORM\Column(type="float")
      */
     private $price;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)     * 
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -69,6 +76,18 @@ class Product
     public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
