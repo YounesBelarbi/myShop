@@ -21,8 +21,8 @@ saisir ensuite les commandes suivantes:
    
 ## Lancer le projet
 
-1.Lancer le serveur : ``symfony serve`` 
-2.Compiler les assets, dans un autre terminal: ``npm run dev``
+1. Lancer le serveur : ``symfony serve`` 
+2. Compiler les assets, dans un autre terminal: ``npm run dev``
 
 le projet se lance et est accessible sur l'url:
 https://localhost:8000/
@@ -32,9 +32,9 @@ https://localhost:8000/
 Afin de pouvoir jouer les tests il faut une base de données créer dans ce but.
 
 Pour la mettre en place saisir les commandes suivantes:
-1.``symfony console --env=test doctrine:database:create``
-2.``symfony console --env=test doctrine:schema:create``
-3.``symfony console --env=test doctrine:fixtures:load``
+1. ``symfony console --env=test doctrine:database:create``
+2. ``symfony console --env=test doctrine:schema:create``
+3. ``symfony console --env=test doctrine:fixtures:load``
 
 Pour lancer les tests:
 ``bin/phpunit``
