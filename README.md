@@ -19,7 +19,7 @@ saisir ensuite les commandes suivantes:
 2. Appliquer les migrations: ``symfony console  doctrine:migrations:migrate`` 
 3. Charger les fixtures : ``symfony console doctrine:fixtures:load``
    
-##Lancer le projet
+## Lancer le projet
 
 1.Lancer le serveur : ``symfony serve``
 2.Compiler les assets, dans un autre terminal: ``npm run dev``
@@ -27,7 +27,7 @@ saisir ensuite les commandes suivantes:
 le projet se lance et est accessible sur l'url:
 https://localhost:8000/
 
-##Tests
+## InstallationTests
 
 Afin de pouvoir jouer les tests il faut une base de données créer dans ce but.
 
@@ -40,7 +40,7 @@ Pour lancer les tests:
 ``bin/phpunit``
 
 
-##Api
+## Api
 
 Endpoint Rest api:
 
