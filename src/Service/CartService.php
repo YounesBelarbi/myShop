@@ -58,7 +58,9 @@ class CartService
     public function reduceProductInCart($id)
     {
         $cart = $this->session->get('cart', []);
-        $cart[$id]--;
+        if ($cart[$id] > 1) {
+            $cart[$id]--;
+        }
         $this->session->set('cart', $cart);
     }
 
