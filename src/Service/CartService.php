@@ -47,4 +47,27 @@ class CartService
     {
         $this->session->remove('cart');
     }
+
+    public function addProductInCart(int $id)
+    {
+        $cart = $this->session->get('cart', []);
+        $cart[$id]++;
+        $this->session->set('cart', $cart);
+    }
+
+    public function reduceProductInCart($id)
+    {
+        $cart = $this->session->get('cart', []);
+        if ($cart[$id] > 1) {
+            $cart[$id]--;
+        }
+        $this->session->set('cart', $cart);
+    }
+
+    public function deleteProductFromCart($id)
+    {
+        $cart = $this->session->get('cart', []);
+        unset($cart[$id]);
+        $this->session->set('cart', $cart);
+    }
 }

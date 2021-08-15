@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/product/{id}", name="product_show")
+     * @Route("/product/{slug}", name="product_show")
      */
     public function product_show(Request $request, Product $product, SessionInterface $session): Response
     {
