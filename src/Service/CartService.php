@@ -3,16 +3,16 @@
 namespace App\Service;
 
 use App\Repository\ProductRepository;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class CartService
 {
     private $session;
     private $productRepository;
 
-    public function __construct(SessionInterface $session, ProductRepository $productRepository)
+    public function __construct(RequestStack $requestStack, ProductRepository $productRepository)
     {
-        $this->session = $session;
+        $this->session = $requestStack->getSession();
         $this->productRepository = $productRepository;
     }
 
